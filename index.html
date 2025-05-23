@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -136,39 +135,47 @@
     }
 
     /* Controles música */
-    #controls {
-      background: rgba(255, 255, 255, 0.6);
-      color: #1e3a5f;
-      padding: 20px;
-      border-radius: 12px;
-      display: inline-block;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-      max-width: 320px;
-      margin: 0 auto 40px auto;
-      text-align: center;
-    }
+#controls {
+  background: rgba(255, 255, 255, 0.6);
+  color: #1e3a5f;
+  padding: 20px;
+  border-radius: 12px;
+  display: inline-block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  max-width: 320px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
 
-    #play-pause {
-      background-color: #b3d9ff;
-      color: #003366;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-bottom: 15px;
-      transition: background-color 0.3s, color 0.3s;
-    }
+#play-pause {
+  background-color: #ccc; /* Igual que botón inicio sesión */
+  color: #333;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 12px; /* Espacio abajo para separar del texto volumen */
+  transition: background-color 0.2s;
+}
 
-    #play-pause:hover {
-      background-color: #99c2ff;
-      color: #002244;
-    }
+#play-pause:hover {
+  background-color: #bbb;
+  color: #333;
+}
 
-    input[type="range"] {
-      width: 200px;
-      margin-top: 10px;
-    }
+#volume-label {
+  display: block; /* Para que esté en línea nueva */
+  margin-top: 8px;
+  color: #1e3a5f; /* mismo color que el formulario */
+  font-weight: bold;
+}
+
+input[type="range"] {
+  width: 200px;
+  margin-top: 8px;
+}
+
 
     label {
       font-weight: bold;
@@ -221,11 +228,12 @@
   </audio>
 
   <!-- Controles música -->
-  <div id="controls">
-    <button id="play-pause">Reproducir</button>
-    <label for="volume">Volumen:</label>
-    <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" />
-  </div>
+ <div id="controls">
+  <button id="play-pause">Reproducir</button>
+  <label id="volume-label" for="volume">Volumen:</label>
+  <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" />
+</div>
+
 
   <script>
     // Login
