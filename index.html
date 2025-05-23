@@ -1,10 +1,25 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<title>ARINC429</title>
-<style>
+  <meta charset="UTF-8">
+  <title>ARINC429</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("airplane.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+    }
+
+    /* Estilos del reproductor */
     #controls {
-      background: rgba(255, 255, 255, 0.6);  /* blanco translúcido */
-      color: #1e3a5f;  /* azul marino */
+      background: rgba(255, 255, 255, 0.6);
+      color: #1e3a5f;
       padding: 20px;
       border-radius: 12px;
       display: inline-block;
@@ -33,48 +48,127 @@
     }
 
     label {
-      display: block;
-      margin-top: 10px;
-      margin-bottom: 5px;
       font-weight: bold;
     }
-    body {
-      background-image: url("airplane.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
+
+    /* Estilos del formulario */
+    .formulario {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 320px;
+      margin: 30px auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      text-align: left;
+    }
+
+    .formulario h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #1e3a5f;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 0;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      background: transparent;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      color: #999;
+      pointer-events: none;
+      transition: 0.2s ease all;
+    }
+
+    .form-group input:focus ~ label,
+    .form-group input:not(:placeholder-shown) ~ label {
+      top: -14px;
+      font-size: 13px;
+      color: #3f51b5;
+    }
+
+    .form-group input:focus {
+      border-bottom: 2px solid #3f51b5;
+    }
+
+    .recordar,
+    .registrarse {
+      font-size: 14px;
+      color: #333;
+      margin-top: 10px;
       text-align: center;
     }
-</style>
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #3f51b5;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #2c3e94;
+    }
+
+    .registrarse a {
+      color: #3f51b5;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
 
   <h1>ARINC 429</h1>
-  <h2>Que es ARINC 429?</h2>
+  <h2>¿Qué es ARINC 429?</h2>
   <p>ARINC 429 es un estándar aeroespacial que define las características 
     de la transferencia de datos dentro de los dispositivos de aviónica aeroespacial.
     Es el acrónimo de Aeronautical Radio, Incorporated y comenzó a usarse en 1929.
     Este estándar técnico fue publicado por la Comisión Federal de Radio
     (que luego se convirtió en la Comisión Federal de Comunicaciones) con el propósito
     de servir como licenciatario único de la industria aérea y coordinador de radiocomunicaciones.</p>
-    <div class="formulario">
-        <h1>Inicion de sesión</h1>
-        <form method="post">
-            <div class="username">
-                <input type="text" required>
-                <label>Nombre de usuario </label>
-            </div>
-        </form>
-    </div>
-   <audio id="bg-music" loop>
+
+  <div class="formulario">
+    <h1>Inicio de sesión</h1>
+    <form method="post">
+      <div class="form-group">
+        <input type="text" id="usuario" placeholder=" " required>
+        <label for="usuario">Nombre de usuario</label>
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" placeholder=" " required>
+        <label for="password">Contraseña</label>
+      </div>
+      <div class="recordar">¿Olvidó su contraseña?</div>
+      <input type="submit" value="Iniciar sesión">
+      <div class="registrarse">
+        <a href="#">Registrarse</a>
+      </div>
+    </form>
+  </div>
+
+  <audio id="bg-music" loop>
     <source src="Midnight Rendezvous - CASIOPEA.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
-    
-    <div id="controls">
+
+  <div id="controls">
     <button id="play-pause">Reproducir</button>
     <label for="volume">Volumen:</label>
     <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
@@ -85,7 +179,6 @@
     const playPauseBtn = document.getElementById("play-pause");
     const volumeSlider = document.getElementById("volume");
 
-    // Inicializa el volumen
     audio.volume = 0.5;
 
     playPauseBtn.addEventListener("click", () => {
@@ -104,3 +197,4 @@
   </script>
 </body>
 </html>
+
