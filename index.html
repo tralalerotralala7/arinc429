@@ -2,6 +2,9 @@
 <head>
 <title>ARINC429</title>
 <style>
+    #controls {
+      margin-top: 20px;
+    }
     body {
       background-image: url("airplane.jpg");
       background-size: cover;
@@ -24,9 +27,38 @@
     Este estándar técnico fue publicado por la Comisión Federal de Radio
     (que luego se convirtió en la Comisión Federal de Comunicaciones) con el propósito
     de servir como licenciatario único de la industria aérea y coordinador de radiocomunicaciones.</p>
-   <audio autoplay loop>
-  <source src="Midnight Rendezvous - CASIOPEA.mp3" type="audio/mpeg">
-  Tu navegador no soporta la reproducción de audio.
-</audio>
+   <audio id="bg-music" loop>
+    <source src="Midnight Rendezvous - CASIOPEA.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+    
+    <div id="controls">
+    <button id="play-pause">Reproducir</button>
+    <label for="volume">Volumen:</label>
+    <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+  </div>
+
+  <script>
+    const audio = document.getElementById("bg-music");
+    const playPauseBtn = document.getElementById("play-pause");
+    const volumeSlider = document.getElementById("volume");
+
+    // Inicializa el volumen
+    audio.volume = 0.5;
+
+    playPauseBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = "Pausar";
+      } else {
+        audio.pause();
+        playPauseBtn.textContent = "Reproducir";
+      }
+    });
+
+    volumeSlider.addEventListener("input", () => {
+      audio.volume = volumeSlider.value;
+    });
+  </script>
 </body>
 </html>
